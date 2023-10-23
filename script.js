@@ -2,24 +2,19 @@
 
 const textElement = document.createElement("span");
 const fillElement = document.createElement("span");
+const cursor = document.createElement("span");
+cursor.classList.add("cursor");
+cursor.innerHTML = "&nbsp;";
 
-const additionalDiv = document.querySelector(".additional-div");
-const bodyElement = document.querySelector("body");
-
-const originalText = ' World");';
 const stavanger = "Stavanger";
 const initialText = 'printf("Hello World");';
 
-let eraseIndex = originalText.length;
 let typeIndex = 0;
 const typeWriterPause = 200;
 
 const bufferLength = 28;
 let buffer = Array(bufferLength).join(" ");
 let cursorIndex = 0;
-let cursor = document.createElement("span");
-cursor.classList.add("cursor");
-cursor.innerHTML = "&nbsp;";
 
 const displayElement = document.querySelector(".console-text");
 displayElement.appendChild(textElement);
@@ -43,7 +38,6 @@ function printBuffer() {
 
 function typeInitialText() {
   if (typeIndex < initialText.length) {
-    // Type the text
     buffer =
       buffer.slice(0, typeIndex) +
       initialText.slice(typeIndex, typeIndex + 1) +
@@ -70,7 +64,6 @@ function typeWriterEffect() {
     }
   } else if (phase === "erasing") {
     if (cursorIndex > 13) {
-      // Erase one character
       cursorIndex--;
       buffer =
         buffer.slice(0, cursorIndex) + buffer.slice(cursorIndex + 1) + " ";
@@ -125,7 +118,7 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault();
 
-    document.querySelector(".new-content-div").scrollIntoView({
+    document.querySelector(".page2").scrollIntoView({
       block: "start",
       inline: "nearest",
       behavior: "smooth",
@@ -135,6 +128,6 @@ document
 window.onload = function () {
   setTimeout(typeInitialText, 500);
   setTimeout(() => {
-    additionalDiv.classList.add("fade-in");
+    document.querySelector(".more-info").classList.add("fade-in");
   }, 1000);
 };
