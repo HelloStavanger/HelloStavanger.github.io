@@ -113,7 +113,7 @@ function typeWriterEffect() {
     cursorIndex++;
     printBuffer();
     phase = "end";
-    setTimeout(typeWriterEffect, typeWriterPause);
+    setTimeout(typeWriterEffect, typeWriterPause * 4);
   } else if (phase === "end") {
     cursorIndex = buffer.length - 1;
     printBuffer();
@@ -136,5 +136,5 @@ window.onload = function () {
   setTimeout(typeInitialText, 500);
   setTimeout(() => {
     additionalDiv.classList.add("fade-in");
-  }, 750);
+  }, 1000);
 };
