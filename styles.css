@@ -1,13 +1,40 @@
 :root {
   --green-color: #71d358;
+  --background-color: #282c34;
 }
 body {
   margin: 0;
   height: 100vh;
-  background-color: #282c34;
+  background-color: var(--background-color);
   color: var(--green-color);
   font-family: "Roboto Mono", monospace;
-  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 8pt;
+    }
+    .additional-div {
+        font-size: 1.5em;
+    }
+
+    .new-content-div {
+        padding: 0 40px;
+    }
+
+}
+@media only screen and (min-width: 601px) {
+    body {
+        font-size: 8pt;
+    }
+    .additional-div {
+        font-size: 1.5em;
+    }
+
+    .new-content-div {
+        padding: 0 200px;
+    }
+
 }
 
 .content-wrapper {
@@ -20,6 +47,11 @@ body {
 
 .new-content-div {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .center-container {
@@ -57,9 +89,56 @@ body {
 
 .cursor {
   display: inline-block;
-  font-size: 0.9em; /* Adjust according to font size */
-  animation: blink 1s infinite, boxShadow 1.6s infinite;
-  background-color: var(--green-color); /* Classic green console text */
+  font-size: 1em; /* Adjust according to font size */
+  animation: blink 0.7s infinite, boxShadow 1.6s infinite;
+  background-color: var(--green-color);
+}
+
+#mc_embed_shell { 
+    margin-top: 20px;
+}
+#mc_embed_shell .indicates-required {
+  display: none;
+}
+
+#mc_embed_shell .asterisk {
+  display: none;
+}
+
+#mc_embed_shell .asterisk {
+  display: none;
+}
+
+#mc_embed_signup .mc-field-group {
+  clear: left;
+  position: relative;
+  width: 96%;
+  padding-bottom: 3%;
+  min-height: 50px;
+  display: grid;
+}
+
+#mc_embed_signup .button {
+  clear: both;
+  background-color: var(--green-color);
+  border: 0 none;
+  border-radius: 4px;
+  transition: all 0.23s ease-in-out 0s;
+  color: var(--background-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: normal;
+  height: 32px;
+  line-height: 32px;
+  margin: 0 5px 10px 0;
+  padding: 0 22px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: fit-content;
+  width: -moz-fit-content;
 }
 
 /* CRT effect by Alec Lownes: http://aleclownes.com/2017/02/01/crt-display.html */
@@ -104,12 +183,14 @@ body {
 @keyframes blink {
   0%,
   50% {
-    opacity: 1;
+    background-color: var(--green-color);
+    color: var(--background-color);
   }
   51%,
   100% {
-    opacity: 0;
-  }
+    background-color: var(--background-color);
+    color: var(--green-color);
+     /* box-shadow: none; */
 }
 
 @keyframes boxShadow {
